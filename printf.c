@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdio.h>
+<<<<<<< HEAD
 
 /**
  * _printf - produces output according to a format
@@ -8,6 +9,9 @@
  * Return: number of characters printed (excluding null byte)
  */
 
+=======
+#
+>>>>>>> 9481de5a0c17c159d199af02b5840ba8da34cd38
 int _printf(const char *format, ...)
 {
   va_list args;
