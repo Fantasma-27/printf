@@ -45,7 +45,6 @@ int _printf(const char *format, ...)
 		if (*format != '%')
 		{
 			print_char(*format, &length);
-
 		}
 		else
 		{
@@ -55,14 +54,12 @@ int _printf(const char *format, ...)
 			{
 				int c = va_arg(args, int);
 				print_char(c, &length);
-
 			}
 			else
 				if (*format == 's')
 				{
 					char *str = va_arg(args, char *);
 					print_string(str, &length);
-
 				}
 				else
 					if (*format == '%')
@@ -75,5 +72,5 @@ int _printf(const char *format, ...)
 	}
 
 	va_end(args);
-	return (length);
+	return length;
 }
