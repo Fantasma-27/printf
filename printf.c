@@ -2,6 +2,32 @@
 #include <stdio.h>
 
 /**
+ * print_char - Prints a single character
+ * @c: Character to print
+ * @length: Pointer to the length variable
+ */
+void print_char(int c, int *length)
+{
+	putchar(c);
+	(*length)++;
+}
+
+/**
+ * print_string - Prints a string
+ * @str: String to print
+ * @length: Pointer to the length variable
+ */
+void print_string(const char *str, int *length)
+{
+	while (*str)
+	{
+		putchar(*str);
+		(*length)++;
+		str++;
+	}
+}
+
+/**
  * _printf - produces output according to a format
  * @format: a character string composed of zero or more directives
  *
@@ -18,8 +44,7 @@ int _printf(const char *format, ...)
 	{
 		if (*format != '%')
 		{
-			putchar(*format);
-			length++;
+			print_char(*format, &length);
 		}
 		else
 		{
@@ -28,26 +53,20 @@ int _printf(const char *format, ...)
 			if (*format == 'c')
 			{
 				int c = va_arg(args, int);
-				putchar(c);
-				length++;
+				print_char(c, &length);
+
 			}
 			else
 				if (*format == 's')
 				{
 					char *str = va_arg(args, char *);
+					print_string(str, &length);
 
-					while (*str)
-					{
-						putchar(*str);
-						length++;
-						str++;
-					}
 				}
 				else
 					if (*format == '%')
 					{
-						putchar('%');
-						length++;
+						print_char('%', &length);
 					}
 		}
 
