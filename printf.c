@@ -8,8 +8,8 @@
  */
 void print_char(int c, int *length)
 {
-  putchar(c);
-  (*length)++;
+	putchar(c);
+	(*length)++;
 }
 
 /**
@@ -19,12 +19,12 @@ void print_char(int c, int *length)
  */
 void print_string(const char *str, int *length)
 {
-  while (*str)
-    {
-      putchar(*str);
-      (*length)++;
-      str++;
-    }
+	while (*str)
+	{
+		putchar(*str);
+		(*length)++;
+		str++;
+	}
 }
 
 /**
@@ -35,44 +35,45 @@ void print_string(const char *str, int *length)
  */
 int _printf(const char *format, ...)
 {
-  va_list args;
-  int length = 0;
+	va_list args;
+	int length = 0;
 
-  va_start(args, format);
+	va_start(args, format);
 
-  while (*format != '\0')
-    {
-      if (*format != '%')
+	while (*format != '\0')
 	{
-	  print_char(*format, &length);
-
-	}
-      else
-	{
-	  format++;
-
-	  if (*format == 'c')
-	    {
-	      int c = va_arg(args, int);
-	      print_char(c, &length);
-
-	    }
-	  else
-	    if (*format == 's')
-	      {
-		char *str = va_arg(args, char *);
-		print_string(str, &length);
-
-	      }
-	    else
-	      if (*format == '%')
+		if (*format != '%')
 		{
-		  print_char('%', &length);
+			print_char(*format, &length);
+
 		}
+		else
+		{
+			format++;
+
+			if (*format == 'c')
+			{
+				int c = va_arg(args, int);
+				print_char(c, &length);
+
+			}
+			else
+				if (*format == 's')
+				{
+					char *str = va_arg(args, char *);
+					print_string(str, &length);
+
+				}
+				else
+					if (*format == '%')
+					{
+						print_char('%', &length);
+					}
+		}
+
+		format++;
 	}
 
-      format++;
-    }
-  va_end(args);
-  return (length);
+	va_end(args);
+	return (length);
 }
