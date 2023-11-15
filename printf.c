@@ -73,7 +73,6 @@ print_char('%', &length);
 
 format++;
 }
-
 va_end(args);
 return (length);
 }
