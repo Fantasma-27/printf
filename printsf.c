@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include <stdio.h>
+#include "main.h"
 
 /**
  * print_char - Prints a single character
