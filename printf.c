@@ -28,6 +28,17 @@ void print_string(const char *str, int *length)
 }
 
 /**
+ * print_integer - Prints an integer
+ * @n: Integer to print
+ * @length: Pointer to the length variable
+ */
+void print_integer(int n, int *length)
+{
+	printf("%d", n);
+	*length += snprintf(NULL, 0, "%d", n);
+}
+
+/**
  * _printf - produces output according to a format
  * @format: a character string composed of zero or more directives
  *
@@ -62,15 +73,21 @@ int _printf(const char *format, ...)
 					print_string(str, &length);
 				}
 				else
-					if (*format == '%')
+					if (*format == 'd' || *format == 'i')
 					{
-						print_char('%', &length);
+						int num = va_arg(args, int);
+						print_integer(num, &length);
 					}
+					else
+						if (*format == '%')
+						{
+							print_char('%', &length);
+						}
 		}
 
 		format++;
 	}
 
 	va_end(args);
-	return length;
+	return (length);
 }
