@@ -2,9 +2,9 @@
 #include <stdio.h>
 
 /**
- * print_char - Prints a single character
- * @c: Character to print
- * @length: Pointer to the length variable
+ * print_char - prints a character
+ * @c: character to print
+ * @length: pointer to the length variable
  */
 void print_char(int c, int *length)
 {
@@ -19,7 +19,7 @@ void print_char(int c, int *length)
  */
 void print_string(const char *str, int *length)
 {
-	while (*str)
+	while (str && *str)
 	{
 		putchar(*str);
 		(*length)++;
